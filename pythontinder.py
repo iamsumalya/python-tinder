@@ -1,15 +1,15 @@
 import mysql.connector,sys,time
 
-class apnatinder:
+class pythontinder:
     def __init__(self):
         
         self.conn=mysql.connector.connect(user="root",password=""
-                                          ,host="localhost",database="apnatinder")
+                                          ,host="localhost",database="pythontinder")
         self.mycursor=self.conn.cursor()
         self.program_menu()
 
     def program_menu(self):
-        user_response1=input("""Welcome to ApnaTinder
+        user_response1=input("""Welcome to PythonTinder
         1. Enter 1 to Register
         2. Enter 2 to Login
         3. Anything else to exit""")
@@ -51,7 +51,7 @@ class apnatinder:
         city=input("City: ")
 
         # run db query to insert
-        self.mycursor.execute("""INSERT INTO `apnatinder`.`users` 
+        self.mycursor.execute("""INSERT INTO `pythontinder`.`users` 
         (`user_id`, `name`, `email`, `password`, `gender`, `city`)
          VALUES (NULL, '%s', '%s', '%s', '%s', '%s')""" %
                               (name,email,password,gender,city))
@@ -99,7 +99,7 @@ class apnatinder:
         self.propose(whom_to_propose)
 
     def propose(self,proposed_user_id):
-        self.mycursor.execute("""INSERT INTO `apnatinder`.`proposals` 
+        self.mycursor.execute("""INSERT INTO `pythontinder`.`proposals` 
         (`proposal_id`, `proposed_by`, `proposed_to`) VALUES (NULL, '%s', '%s')"""
                               % (self.current_user_id,proposed_user_id))
         self.conn.commit()
@@ -149,7 +149,7 @@ class apnatinder:
 
 
     def goodbye(self):
-        print("Thanks for using ApnaTinder! BTW aaye kyu the?")
+        print("Thanks for using PythonTinder! BTW aaye kyu the?")
         print("Closing App...")
         time.sleep(2)
         print("Closed")
